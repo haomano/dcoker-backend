@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ddsapp
+Implementation-Version: 0.0.1
+Built-By: liuxinying
+Implementation-Vendor-Id: com.deliguoo
+Build-Jdk: 1.8.0_191
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ddsapp
+Created-By: Maven Integration for Eclipse
+

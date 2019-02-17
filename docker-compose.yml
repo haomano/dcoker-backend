@@ -1,0 +1,43 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:latest
+    restart: on-failure
+    #ports:
+    #- 27017:27017 
+    volumes:
+      - /dds/mongo:/data/db
+    command: --auth
+    container_name: dds-mongo
+    #--logpath=/dds/logs/mongo.log
+    networks:
+      - ddsnet
+    
+# APP  ***************************************************************************************
+  ddsapp:
+    #image: haomano/ddsapp:init
+    build: .
+    #deploy:
+      #replicas: 3
+      #resources:
+      # limits:
+      #  cpus: "0.1"
+       # memory: 50M
+      #restart_policy:
+       # condition: on-failure
+    ports:
+    - 8080:8080
+    restart: on-failure
+    container_name: ddsapp
+    environment:
+      - spring.data.mongodb.uri=mongodb://answerrw:For-the-first-sapp@mongo:27017/answer
+    depends_on:
+      - mongo
+    networks:
+      - ddsnet    
+
+networks:
+  ddsnet:
+#volumes:
+  #dds:
+
